@@ -12,7 +12,7 @@ import io.circe.syntax._
 import io.circe.generic.semiauto.deriveDecoder
 import org.millsmont.nbaNotifications.JSON.Decoder._
 
-trait ScoreReader {
+trait GameReader {
   implicit val backend = HttpURLConnectionBackend()
 
   type GameId = Int
@@ -24,7 +24,7 @@ trait ScoreReader {
     val request = basicRequest
       .get(uri"https://api-nba-v1.p.rapidapi.com/games/live/")
       .header("x-rapidapi-host", "api-nba-v1.p.rapidapi.com")
-      .header("x-rapidapi-key", "")
+      .header("x-rapidapi-key", "69c1cdb31cmsh928783baf7b1cf5p1d4401jsnd50635f826b9")
 
     val response: Identity[Response[Either[String, String]]] = request.send()
     println(response)
@@ -46,7 +46,7 @@ trait ScoreReader {
     val request = basicRequest
       .get(uri"https://api-nba-v1.p.rapidapi.com/games/date/$date")
       .header("x-rapidapi-host", "api-nba-v1.p.rapidapi.com")
-      .header("x-rapidapi-key", " ")
+      .header("x-rapidapi-key", "69c1cdb31cmsh928783baf7b1cf5p1d4401jsnd50635f826b9")
 
 
     val response: Identity[Response[Either[String, String]]] = request.send()
@@ -58,8 +58,6 @@ trait ScoreReader {
     } yield decoded
 
   }
-
-
 
 
   case class TimeRange(start: java.time.Instant, end: java.time.Instant)
@@ -76,9 +74,6 @@ trait ScoreReader {
 
     } yield TimeRange(Instant.now(), Instant.now())
   }
-
-
-
 
 
   def getLiveCloseGames(): Either[Serializable, Seq[GameData]] = {

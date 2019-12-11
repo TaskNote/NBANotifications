@@ -10,6 +10,8 @@ case class GameData(gameId: Int, period: Int, startTime: String, endTime: String
 
   val diff: Int = abs(homePoints - awayPoints)
 
+  val gameHeader: String = s"$homeTeam ($homePoints) vs $awayTeam ($awayPoints)"
+
 }
 
 
